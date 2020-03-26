@@ -49,4 +49,12 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
          broadCastMessage("SERVER","Клиент " + clientName + " вышел из сети");
          ctx.close();
     }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Клиент "+clientName+" отвалился");
+        channels.remove(ctx.channel());
+        broadCastMessage("SERVER","Клиент " + clientName + " вышел из сети");
+        ctx.close();
+    }
 }

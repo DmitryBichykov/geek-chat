@@ -1,7 +1,6 @@
 package com.geekbrains.geek.chat.client;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -22,19 +21,19 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        network=new Network((args -> {
-            mainArea.appendText((String) args[0]);
-        }));
+        network=new Network((args ->
+            mainArea.appendText((String) args[0])
+        ));
     }
 
 
-    public void sendMsgAction(ActionEvent actionEvent) {
+    public void sendMsgAction() {
         network.sendMessage(msgField.getText());
         msgField.clear();
         msgField.requestFocus();
     }
 
-    public void exitAction(ActionEvent actionEvent) {
+    public void exitAction() {
         network.close();
         Platform.exit();
     }
