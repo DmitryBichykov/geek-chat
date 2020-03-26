@@ -8,10 +8,20 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
 <VBox fx:controller="com.geekbrains.geek.chat.client.Controller" xmlns:fx="http://javafx.com/fxml">
+    <MenuBar>
+        <Menu text="Программа">
+           <MenuItem onAction="#exitAction" text="Выйти"></MenuItem>
+        </Menu>
+
+    </MenuBar>
+
     <TextArea fx:id="mainArea" editable="false" VBox.vgrow="ALWAYS"/>
     <HBox>
-        <TextField fx:id="msgFiels" HBox.hgrow="ALWAYS" promptText="Введите сообщение..."/>
-        <Button text="Отправить"/>
+        <TextField fx:id="msgField" HBox.hgrow="ALWAYS" onAction="#sendMsgAction" promptText="Введите сообщение..."/>
+        <Button onAction="#sendMsgAction" text="Отправить"/>
     </HBox>
 </VBox>
